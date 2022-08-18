@@ -61,7 +61,7 @@ try:
 
     #generisemo sifru i encodujemo je
     def generisi():
-        characters = string.ascii_lowercase + string.digits
+        characters = string.ascii_uppercase + string.digits
         password =  "".join(choice(characters) for x in range(randint(10, 15)))
         sifra_bytes = password.encode('ascii')
         base64_bytes = base64.b64encode(sifra_bytes)
