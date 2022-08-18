@@ -1,3 +1,4 @@
+from cProfile import label
 import ntplib
 import datetime, time
 from datetime import timedelta
@@ -48,7 +49,7 @@ try:
             file = open("sifra64.txt", "r")
             base64_sifra = file.readline()
             file.close
-        except:messagebox.showerror("greska","Morate generisati sifru i zadati timer")
+        except:messagebox.showerror("greska","Morate imati sifru i zadati timer")
 
         base64_bytes =  base64_sifra.encode('ascii')
         sifra_bytes = base64.b64decode(base64_bytes)
@@ -72,11 +73,10 @@ try:
             file.close
         else:
             odgovor = askyesno(title='UPOZORENJE',message='Ako generisete novu sifru stara ce se obrisati!')
-            if odgovor:
+            if odgovor==TRUE:
                 file = open("sifra64.txt", "w")
                 file.write(base64_sifra)
                 file.close
-
     #pravimo elemente
     Ispis=Label(text="Izaberi koliko sati ce tajmer trajati")
     Ispis.pack()
@@ -89,6 +89,7 @@ try:
     DugmeOtkljucaj.place(x=200,y=140,anchor=CENTER)
     generisi_dugme=Button(text="Generisi", bg="lightgreen", font=('Myriad',11,'bold'),  width=12, command=generisi)
     generisi_dugme.place(x=200,y=180,anchor=CENTER)
+
 
     glavni_prozor.mainloop()
 
