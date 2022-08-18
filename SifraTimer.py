@@ -1,4 +1,3 @@
-from cProfile import label
 import ntplib
 import datetime, time
 from datetime import timedelta
